@@ -1,0 +1,122 @@
+.box-shadow(@x : 0, @y : 0, @blur : 1px, @radius : 1px, @color : #000) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+
+.box-shadow-inset(@x : 0, @y : 0, @blur : 1px, @radius : 1px, @color : #000) {
+  box-shadow: inset @arguments;
+  -moz-box-shadow: inset @arguments;
+  -webkit-box-shadow: inset @arguments;
+}
+
+.box-shadow-none() {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.text-shadow(@x: 0, @y: 0, @blur: 1px, @color: #000) {
+  text-shadow: @arguments;
+}
+
+.gradient(@start, @finish, @orientation) {
+  background: @start; /* Old browsers */
+  background: -moz-linear-gradient(@orientation, @start, @finish); /* FF3.6+ */
+  background: -webkit-gradient(linear, @orientation, color-stop(@start), color-stop(@finish)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(@orientation,  @start, @finish); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(@orientation,  @start, @finish); /* Opera 11.10+ */
+  background: linear-gradient(@orientation,  @start, @finish); /* W3C */
+  background: -ms-linear-gradient(@orientation,  @start, @finish); /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@start, endColorstr=@finish, GradientType=0); /* IE6-9 */
+
+  background-size: contain;
+}
+
+.gradient-with-image(@image, @repeat, @position, @start, @finish, @orientation) {
+  background: @start; /* Old browsers */
+  background: @image @repeat @position, -moz-linear-gradient(@orientation, @start, @finish); /* FF3.6+ */
+  background: @image @repeat @position, -webkit-gradient(linear, @orientation, color-stop(@start), color-stop(@finish)); /* Chrome,Safari4+ */
+  background: @image @repeat @position, -webkit-linear-gradient(@orientation,  @start, @finish); /* Chrome10+,Safari5.1+ */
+  background: @image @repeat @position, -o-linear-gradient(@orientation,  @start, @finish); /* Opera 11.10+ */
+  background: @image @repeat @position, -ms-linear-gradient(@orientation,  @start, @finish); /* IE10+ */
+  background: @image @repeat @position, linear-gradient(@orientation,  @start, @finish); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@start, endColorstr=@finish, GradientType=0); /* IE6-9 */
+
+  background-size: contain;
+}
+
+.image-background(@image, @repeat:no-repeat, @position:top) {
+  background: @image @repeat @position;
+  background: @image @repeat @position;
+  background: @image @repeat @position;
+  background: @image @repeat @position;
+  background: @image @repeat @position;
+  background: @image @repeat @position;
+}
+
+.rotated-text(@degrees, @origin) {
+  transform: rotate(@degrees);
+  transform-origin: @origin;
+  -ms-transform: rotate(@degrees); /* IE 9 */
+  -ms-transform-origin: @origin; /* IE 9 */
+  -webkit-transform: rotate(@degrees); /* Safari and Chrome */
+  -webkit-transform-origin: @origin; /* Safari and Chrome */
+  -moz-transform: rotate(@degrees); /* Firefox */
+  -moz-transform-origin: @origin; /* Firefox */
+  -o-transform: rotate(@degrees); /* Opera */
+  -o-transform-origin: @origin; /* Opera */
+}
+
+.rotated-text(@degrees) {
+  transform: rotate(@degrees);
+  -ms-transform: rotate(@degrees); /* IE 9 */
+  -webkit-transform: rotate(@degrees); /* Safari and Chrome */
+  -moz-transform: rotate(@degrees); /* Firefox */
+  -o-transform: rotate(@degrees); /* Opera */
+}
+
+.border-radius (@topLeft, @topRight, @bottomRight, @bottomLeft) {
+  -webkit-border-radius: @arguments;
+  -moz-border-radius: @arguments;
+  border-radius: @arguments;
+}
+
+.border-radius(@singleRadius) {
+  .border-radius(@singleRadius, @singleRadius, @singleRadius, @singleRadius);
+}
+
+.border-radius(@topRadius, @bottomRadius) {
+  .border-radius(@topRadius, @topRadius, @bottomRadius, @bottomRadius);
+}
+
+.center-on-screen(@width, @height) {
+  width: @width;
+  height: @height;
+  left: 50%;
+  top: 50%;
+  margin-left: -(@width/2);
+  margin-top: -(@height/2);
+}
+
+.not-selectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.node-color(@color) {
+  color: @color;
+  stroke: darken(@color, 20%);
+  fill: @color;
+  background: @color;
+  display: inline-block;
+}
+
+.edge-color(@color) {
+  color: @color;
+  stroke: @color;
+}
