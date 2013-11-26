@@ -1,34 +1,37 @@
 /* app css stylesheet */
 
 .header-background {
-	background : @purple;
-	height     : 200px;
 	position   : absolute;
+	background : @purple;
+	height     : @header-height;
 	width      : 100%;
 	left       : 0px;
 	top        : 0px;
 
 	img {
-		display        : inline-block;
+		position       : absolute;
+		z-index        : 1;
 		height         : 200px;
 		vertical-align : top;
 	}
 
 	.header {
 		display     : inline-block;
-		margin      : 10px;
-		background  : @navy_blue;
-		height      : 40px;
+		margin      : @menu-margin;
+		margin-left : @sidebar-width + 50px;
+		background  : @navy-blue;
+		height      : @menu-height - @menu-margin * 2;
 		line-height : 40px;
 
 		ul {
 			list-style : none;
 			margin     : 0px;
-			padding    : 0px 10px;
+			padding    : 0px 10px 0px 0px;
 
 			> li {
-				display     : inline;
-				line-height : 20px;
+				display      : inline;
+				line-height  : 20px;
+				padding-left : 10px;
 
 				a {
 					color : whitesmoke;

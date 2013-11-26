@@ -1,5 +1,34 @@
-<p>This is the partial for view 2.</p>
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
+<h1>User Input Binding</h1>
+
+<p>This page is a demonstration of binding inputs to a model</p>
+
+<row>
+    <column span="5" offset="1">
+        <row>
+            <column span="3" align="right">
+                <label for="title">Title:</label>
+            </column>
+            <column span="9">
+                <select class="form-control" id="title"
+                        ng-model="title"
+                        ng-options="t.text group by t.gender for t in titles track by t.value">
+                </select>
+            </column>
+        </row>
+
+        <row>
+            <column span="3" align="right">
+                <label for="name">Name:</label>
+            </column>
+            <column span="9">
+                <input id="name" type="text" class="form-control" ng-model="name">
+            </column>
+        </row>
+        <hr>
+        <row>
+            <column span="12">
+                Thank you for putting in your information {{ title.text }} {{ name }}.</p>
+            </column>
+        </row>
+    </column>
+</row>

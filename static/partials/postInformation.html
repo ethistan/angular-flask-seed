@@ -1,0 +1,49 @@
+<h1>POSTing Information</h1>
+
+<p>This page is a demonstration of entering information and posting it to a RESTful server</p>
+
+
+<row>
+    <column span="5" offset="1">
+        <row>
+            <column align="right">
+                <label for="name">Name:</label>
+            </column>
+            <column>
+                <input id="name" type="text" class="form-control" ng-model="name">
+            </column>
+        </row>
+
+        <row>
+            <column align="right">
+                <label for="title">Title:</label>
+            </column>
+            <column>
+                <select class="form-control" id="title"
+                        ng-model="title"
+                        ng-options="t.text group by t.gender for t in titles track by t.value">
+                </select>
+            </column>
+        </row>
+
+        <hr>
+
+        <row>
+            <column span="12" align="center">
+                <div class="alert alert-danger" ng-show="error">{{ errorMessage }}</div>
+            </column>
+        </row>
+
+        <row>
+            <div column span="12" align="right">
+                <button class="btn btn-primary" ng-click="saveInformation()">Save Information</button>
+            </div>
+        </row>
+
+        <row>
+            <column span="6" offset="3">
+                <p ng-bind="serverResponse"></p>
+            </column>
+        </row>
+    </column>
+</row>

@@ -1,12 +1,41 @@
+* {
+	box-sizing : border-box;
+}
+
 body {
 	background : @white;
 }
 
 .sidebar {
-	background : @purple;
-	width      : 130px;
 	position   : fixed;
+	background : @purple;
+	width      : @sidebar-width;
+	top        : @header-height;
 	left       : 0px;
-	top        : 200px;
 	bottom     : 0px;
 }
+
+.form-control {
+	.border-radius(5px);
+	border      : 1px solid @light-grey;
+	height      : 23px;
+	line-height : 23px;
+}
+
+div.row {
+	margin : 0px;
+}
+
+div[class*="col-md-"] {
+	padding-left  : 5px;
+	padding-right : 5px;
+}
+
+.right-align {
+	text-align : right;
+}
+
+.center-align {
+	text-align : center;
+}
+

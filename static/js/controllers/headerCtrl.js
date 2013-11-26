@@ -8,6 +8,10 @@ angular.module('myApp.controllers.headerCtrl', []).
             {
                 title: "User Input",
                 page: "input"
+            },
+            {
+                title: "Posting",
+                page: "post"
             }
         ];
     }]);
