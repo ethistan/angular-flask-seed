@@ -12,6 +12,10 @@ angular.module('myApp.controllers.headerCtrl', []).
             {
                 title: "Posting",
                 page: "post"
+            },
+            {
+                title: "Getting",
+                page: "get"
             }
         ];
     }]);

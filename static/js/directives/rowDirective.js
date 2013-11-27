@@ -1,13 +1,11 @@
 'use strict';
 
 angular.module('myApp.directives.row', []).
-    directive('row', ['$compile', function ($compile) {
+    directive('row', [function () {
         return {
-            restrict: "E",
+            restrict: "A",
             link: function($scope, $element) {
-                var html = $element.html();
-                var newElement = $compile("<div class='row'>" + html + "</div>")($scope);
-                $element.replaceWith(newElement);
+                $element.addClass("row");
             }
         };
     }]);

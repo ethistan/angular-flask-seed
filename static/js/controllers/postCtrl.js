@@ -29,6 +29,7 @@ angular.module('myApp.controllers.postCtrl', []).
         ];
 
         $scope.name = "John Doe";
+        $scope.title = $scope.titles[1];
         $scope.error = false;
 
         function removeError() {
@@ -40,19 +41,18 @@ angular.module('myApp.controllers.postCtrl', []).
         $scope.$watch('name', removeError);
 
         $scope.saveInformation = function () {
-            console.log("Scope:", $scope);
-
             if (!$scope.title) {
                 $scope.error = true;
                 $scope.errorMessage = "Please select a title";
             }
+            else if (!$scope.name || $scope.name.indexOf(" ") == -1) {
+                $scope.error = true;
+                $scope.errorMessage = "Please enter a valid name... No Madonnas please";
+            }
             else {
-                $http.post("/api/saveInformation", {
-                    name: $scope.name,
-                    title: $scope.title.value
-                }).success(function (data) {
-                        $scope.serverResponse = data;
-                    });
+                $http.post("/api/saveInformation", {name: $scope.name, title: $scope.title.value}).success(function (data) {
+                    $scope.serverResponse = data;
+                });
             }
         }
     }]);

@@ -1,49 +1,63 @@
 <h1>POSTing Information</h1>
 
-<p>This page is a demonstration of entering information and posting it to a RESTful server</p>
+<p>
+    This page is a demonstration of entering information and posting it to a RESTful server
+</p>
+<p>
+    When you press the "Save Information" button, Angular gathers together its model, converts it into JSON and sends a
+    post request to the server to save this information. The server responds asynchronously with its reply, which is
+    displayed below the button when it comes back
+</p>
 
 
-<row>
-    <column span="5" offset="1">
-        <row>
-            <column align="right">
-                <label for="name">Name:</label>
-            </column>
-            <column>
-                <input id="name" type="text" class="form-control" ng-model="name">
-            </column>
-        </row>
-
-        <row>
-            <column align="right">
+<div row>
+    <div column span="5" offset="1">
+        <div row>
+            <div column align="right">
                 <label for="title">Title:</label>
-            </column>
-            <column>
+            </div>
+            <div column>
                 <select class="form-control" id="title"
                         ng-model="title"
                         ng-options="t.text group by t.gender for t in titles track by t.value">
                 </select>
-            </column>
-        </row>
+            </div>
+        </div>
+        <div row>
+            <div column align="right">
+                <label for="name">Name:</label>
+            </div>
+            <div column>
+                <input id="name" type="text" class="form-control" ng-model="name">
+            </div>
+        </div>
 
         <hr>
 
-        <row>
-            <column span="12" align="center">
+        <div row>
+            <div column span="12" align="center">
                 <div class="alert alert-danger" ng-show="error">{{ errorMessage }}</div>
-            </column>
-        </row>
-
-        <row>
+            </div>
+        </div>
+        <div row>
             <div column span="12" align="right">
                 <button class="btn btn-primary" ng-click="saveInformation()">Save Information</button>
             </div>
-        </row>
+        </div>
 
-        <row>
-            <column span="6" offset="3">
-                <p ng-bind="serverResponse"></p>
-            </column>
-        </row>
-    </column>
-</row>
+        <div ng-show="serverResponse">
+            <hr>
+
+            <div row>
+                <div column span="8" offset="2" align="center">
+                    <p>
+                        The server's response was:
+                    </p>
+                    <p>
+                        {{ serverResponse }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

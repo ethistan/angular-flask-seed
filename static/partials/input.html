@@ -1,34 +1,71 @@
 <h1>User Input Binding</h1>
 
-<p>This page is a demonstration of binding inputs to a model</p>
+<p>
+    This page is a demonstration of binding inputs to a model. The text below the inputs are all bound to the same
+    thing, and when the model changes the html is updated to reflect that.
+</p>
+<p>
 
-<row>
-    <column span="5" offset="1">
-        <row>
-            <column span="3" align="right">
+    This can be as simple as just displaying a value, or recalculating values
+</p>
+
+<div row>
+    <div column span="5" offset="1">
+        <div row>
+            <div column span="3" align="right">
                 <label for="title">Title:</label>
-            </column>
-            <column span="9">
+            </div>
+            <div column span="9">
                 <select class="form-control" id="title"
                         ng-model="title"
                         ng-options="t.text group by t.gender for t in titles track by t.value">
                 </select>
-            </column>
-        </row>
+            </div>
+        </div>
 
-        <row>
-            <column span="3" align="right">
+        <div row>
+            <div column span="3" align="right">
                 <label for="name">Name:</label>
-            </column>
-            <column span="9">
+            </div>
+            <div column span="9">
                 <input id="name" type="text" class="form-control" ng-model="name">
-            </column>
-        </row>
+            </div>
+        </div>
+
+        <div row>
+            <div column span="3" align="right">
+                <label for="age">Age:</label>
+            </div>
+            <div column span="9">
+                <input id="age" type="number" class="form-control" ng-model="age">
+            </div>
+        </div>
+
+        <div row>
+            <div column span="3" align="right">
+                <label for="research">Research Area:</label>
+            </div>
+            <div column span="9">
+                <textarea id="research" class="form-control" ng-model="research"></textarea>
+            </div>
+        </div>
+
         <hr>
-        <row>
-            <column span="12">
-                Thank you for putting in your information {{ title.text }} {{ name }}.</p>
-            </column>
-        </row>
-    </column>
-</row>
+
+        <div row>
+            <div column span="12">
+                <p>
+                    Thank you for putting in your information {{ title.text }} {{ name }}.
+                </p>
+
+                <p>
+                    I can see from our records that you are {{ age }} years old. {{ ageDifferenceCalculation() }}
+                </p>
+
+                <p>
+                    I also loved your last paper on the topic of "{{ research }}"
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
