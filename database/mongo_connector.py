@@ -12,12 +12,14 @@ config.read("config/app.cfg")
 
 class Database:
     def __init__(self):
-        mongodb_uri = ":".join([config.get("Mongo", "host"), config.get("Mongo", "port")])
+        mongodb_uri = ":".join([config.get("Mongo", "host"), config.get("Mongo", "port") ])
         db_name = config.get("Mongo", "database")
 
         try:
             connection = Connection(mongodb_uri)
+
             connection.register([Person])
+
             self.database = connection[db_name]
         except ConnectionError:
             print('Error: Unable to connect to database.')
