@@ -45,7 +45,7 @@ angular.module('myApp.controllers.postCtrl', []).
                 $scope.error = true;
                 $scope.errorMessage = "Please select a title";
             }
-            else if (!$scope.name || $scope.name.indexOf("  ") == -1) {
+            else if (!$scope.name || $scope.name.indexOf(" ") == -1) {
                 $scope.error = true;
                 $scope.errorMessage = "Please enter a valid name... No Madonnas please";
             }
