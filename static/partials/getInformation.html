@@ -13,13 +13,12 @@
         <div row>
             <div column span="12" align="center">
                 <button class="btn btn-primary" ng-click="getInformation()">Load Information</button>
-
             </div>
         </div>
 
         <hr>
 
-        <div row ng-repeat="info in information">
+        <div class="info" row ng-repeat="info in information">
             <div column span="6" align="right">
                 <p ng-bind="info.label"></p>
             </div>
