@@ -4,7 +4,7 @@
 
 describe('Input View', function () {
     beforeEach(function () {
-        browser().navigateTo('#/input');
+        browser().navigateTo('/#/input');
     });
 
     it('should display the input fields when the user goes to the input page', function () {
