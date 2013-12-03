@@ -29,7 +29,7 @@ describe('Input View', function () {
     it('should change the age descriptor when the age is changed', function() {
         input('age').enter("ee");
 
-        expect(element('[ng-view] p').text()).toContain("Hmm, your age doesn't seem to be a number...")
+        expect(element('[ng-view] p').text()).toContain("Hmm, your age doesn't seem to be a number...");
 
         input('age').enter(10);
 
