@@ -5,6 +5,8 @@ venv: venv/bin/activate
 venv/bin/activate: requirements.txt
 	test -d venv || virtualenv --distribute venv
 
+    pip install psycopg2
+
 	. venv/bin/activate; pip install -Ur requirements.txt
 	touch venv/bin/activate
 
