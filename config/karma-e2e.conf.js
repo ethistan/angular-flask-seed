@@ -20,6 +20,8 @@ module.exports = function (config) {
             '/': 'http://localhost:5000/'
         },
 
+        reporters: ['dots', 'junit'],
+
         plugins: [
             'karma-junit-reporter',
             'karma-chrome-launcher',
