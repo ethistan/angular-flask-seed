@@ -32,7 +32,7 @@ describe('Post Information View', function () {
 
         //When
         input('name').enter("");
-        element('button[ng-click="saveInformation()"]').click();
+            element('button[ng-click="saveInformation()"]').click();
         input('name').enter("s t");
 
         //Then
