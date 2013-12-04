@@ -24,6 +24,8 @@ module.exports = function(config){
 
     browsers : ['PhantomJS'],
 
+    reporters: ['progress', 'junit'],
+
     plugins : [
             'karma-junit-reporter',
             'karma-chrome-launcher',
