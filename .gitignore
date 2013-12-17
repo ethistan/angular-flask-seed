@@ -2,6 +2,8 @@ logs/*
 !.gitkeep
 node_modules/
 .idea/
-**/*.pyc
+*.pyc
 venv
-
+.DS_Store
+nohup.out
+gunicorn.pid
