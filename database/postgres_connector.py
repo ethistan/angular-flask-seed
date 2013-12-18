@@ -5,19 +5,24 @@ from sqlalchemy.orm import sessionmaker
 from database.sql_models.base import Base
 from database.sql_models.person import Person
 
-env = os.environ.get("ENV", "dev")
-print "ENV:", env
-config = ConfigParser.RawConfigParser()
-config.read("config/" + env + ".app.cfg")
+environment = os.environ.get("ENV", "dev")
 
 
 class Database:
-    def __init__(self):
-        host = config.get("Postgres", "host")
-        port = config.get("Postgres", "port")
-        db_name = config.get("Postgres", "database")
-        username = config.get("Postgres", "username")
-        password = config.get("Postgres", "password")
+    def __init__(self, env=None):
+        config = ConfigParser.RawConfigParser()
+
+        config.read("config/" + environment + ".app.cfg")
+
+        section_name = "Postgres"
+        if env:
+            section_name += " " + env
+
+        host = config.get(section_name, "host")
+        port = config.get(section_name, "port")
+        db_name = config.get(section_name, "database")
+        username = config.get(section_name, "username")
+        password = config.get(section_name, "password")
 
         print "Connecting to:", 'postgresql://%s:%s@%s:%s/%s' % (username, password, host, port, db_name)
 

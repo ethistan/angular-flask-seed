@@ -16,26 +16,22 @@ update:
 	source venv/bin/activate; pip install -Ur requirements.txt
 
 kill:
-	test ! -f gunicorn.pid || kill  $(cat gunicorn.pid); exit 0
-
-kill_local:
-	test ! -f gunicorn.pid || pid=(cat gunicorn.pid) ; kill $pid; exit 0
+	test ! -f gunicorn.pid || kill `cat gunicorn.pid`; exit 0
 
 run:
-	source venv/bin/activate ; gunicorn server:app -b 0.0.0.0:5000 -p gunicorn.pid -w 4 -D ; deactivate; exit 0
-
-run_local:
-	source venv/bin/activate ; gunicorn server:app -b localhost:5000 -p gunicorn.pid -w 4 -D ; deactivate; exit 0
+	source venv/bin/activate ; gunicorn server:app -c config/gunicorn.py; deactivate; exit 0
 
 clean:
 	rm -rf venv
 	rm -rf node_modules
 
-unit:
-	source venv/bin/activate; nosetests -s; deactivate
-	scripts/test.sh
+test: unit pythontest e2e-test
 
-test: unit
+pythontest:
+	source venv/bin/activate; nosetests -s; deactivate
+
+unit:
+	scripts/test.sh
 
 e2e-test:
 	scripts/e2e-test.sh
