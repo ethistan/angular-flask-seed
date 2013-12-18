@@ -28,10 +28,10 @@ clean:
 test: unit pythontest e2e-test
 
 pythontest:
-	source venv/bin/activate; nosetests -s; deactivate
+	source venv/bin/activate; scripts/python.sh; deactivate
 
 unit:
 	scripts/test.sh
 
 e2e-test:
-	scripts/e2e-test.sh
+	make run; scripts/e2e-test.sh; make kill
