@@ -1,4 +1,5 @@
 import ConfigParser
+import os
 import random
 import math
 from bson import json_util
@@ -14,8 +15,9 @@ app = Flask(__name__)
 mongo_db = Mongo()
 psql_db = Postgres()
 
+environment = os.environ.get("ENV", "dev")
 config = ConfigParser.RawConfigParser()
-config.read("config/app.cfg")
+config.read("config/" + environment + ".app.cfg")
 
 
 def dump_object(json_object):
