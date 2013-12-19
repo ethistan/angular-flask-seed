@@ -15,4 +15,4 @@ class ServerTestCase(unittest.TestCase):
 
 	def test_index_page(self):
 		rv = self.app.get('/')
-		unittest.TestCase.assertRegexpMatches(self, rv.data, "CCG Sample App")
+		self.assertTrue(rv.data.find("CCG Sample App"))
