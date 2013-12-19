@@ -32,4 +32,4 @@ unit:
 	scripts/test.sh
 
 e2e-test:
-	make run; scripts/e2e-test.sh; cat gunicorn.pid; ps ax | grep gunicorn; make kill; exit 0
+	make run; scripts/e2e-test.sh; cat gunicorn.pid; ps aux; make kill; exit 0
