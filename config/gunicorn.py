@@ -27,7 +27,7 @@ def get_debug():
 daemon = True
 bind = get_bind()
 loglevel = get_debug()
-workers = multiprocessing.cpu_count() * 2 + 1
+workers = 4
 pidfile = "gunicorn.pid"
 errorlog = "logs/gunicorn-error.log"
 accesslog = "logs/gunicorn-access.log"
