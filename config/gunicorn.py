@@ -12,7 +12,9 @@ def init_config():
 
 def get_bind():
 	config = init_config()
-	return config.get("Flask", "host") + ":" + config.get("Flask", "port")
+	binding = config.get("Flask", "host") + ":" + config.get("Flask", "port")
+	print "Binding"
+	return binding
 
 
 def get_debug():

@@ -17,7 +17,7 @@ kill:
 	test ! -f gunicorn.pid || kill `cat gunicorn.pid`; exit 0
 
 run:
-	source venv/bin/activate; gunicorn server:app -c config/gunicorn.py; deactivate; ps ax; exit 0
+	source venv/bin/activate; gunicorn server:app -c config/gunicorn.py; deactivate; exit 0
 
 clean:
 	rm -rf venv
