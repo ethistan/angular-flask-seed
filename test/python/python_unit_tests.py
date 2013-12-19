@@ -5,7 +5,7 @@ import server
 environment = os.environ.get("ENV", "dev")
 
 
-class SeverTestCase(unittest.TestCase):
+class ServerTestCase(unittest.TestCase):
 	psql_db = None
 
 	def setUp(self):
@@ -15,4 +15,4 @@ class SeverTestCase(unittest.TestCase):
 
 	def test_index_page(self):
 		rv = self.app.get('/')
-		self.assertRegexpMatches(rv.data, "CCG Sample App")
+		unittest.TestCase.assertRegexpMatches(rv.data, "CCG Sample App")
