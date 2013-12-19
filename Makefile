@@ -8,9 +8,7 @@ build: requirements.txt
 	source venv/bin/activate; pip install -r requirements.txt
 	touch venv/bin/activate
 
-	npm install karma
-	npm install karma-junit-reporter --save-dev
-	npm install karma-ng-scenario --save-dev
+	test karma || npm install karma; npm install karma-junit-reporter --save-dev; npm install karma-ng-scenario --save-dev
 
 update:
 	source venv/bin/activate; pip install -Ur requirements.txt
