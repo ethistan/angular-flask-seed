@@ -34,4 +34,4 @@ unit:
 	scripts/test.sh
 
 e2e-test:
-	make run; scripts/e2e-test.sh; echo gunicorn.pid; ps ax; make kill
+	make run; scripts/e2e-test.sh; echo gunicorn.pid; ps ax; make kill; exit 0
