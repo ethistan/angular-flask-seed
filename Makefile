@@ -26,10 +26,10 @@ clean:
 test: unit pythontest e2e-test
 
 pythontest:
-	source venv/bin/activate; scripts/python.sh; deactivate
+	source venv/bin/activate; scripts/python.sh; deactivate; exit 0
 
 unit:
-	scripts/test.sh
+	scripts/test.sh; exit 0
 
 e2e-test:
-	make run; scripts/e2e-test.sh; cat gunicorn.pid; ps aux; make kill; exit 0
+	make run; scripts/e2e-test.sh; make kill; exit 0
