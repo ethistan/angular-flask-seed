@@ -46,7 +46,7 @@ describe('Post Information View', function () {
         //When
         input('name').enter("s t");
         element('button[ng-click="saveInformation()"]').click();
-	    sleep(1);
+	    sleep(10);
 
         //Then
         expect(element('[ng-view] div[ng-show="serverResponse"]').css('display')).toBe('block');
