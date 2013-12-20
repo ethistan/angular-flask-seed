@@ -23,10 +23,7 @@ clean:
 	rm -rf venv
 	rm -rf node_modules
 
-cleantests:
-	rm test_out/*
-
-test: cleantests unit pythontest e2e-test
+test: unit pythontest e2e-test
 
 pythontest:
 	source venv/bin/activate; scripts/python.sh; deactivate; exit 0
