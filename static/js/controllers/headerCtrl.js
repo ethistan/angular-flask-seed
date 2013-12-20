@@ -15,7 +15,7 @@ angular.module('myApp.controllers.headerCtrl', []).
             },
             {
                 title: "Getting",
-                page: "get"
+                page: "getInfo"
             }
         ];
     }]);
