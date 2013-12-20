@@ -5,6 +5,7 @@
 describe('Get Information View', function () {
     beforeEach(function () {
         browser().navigateTo('/#/get');
+	    sleep(1);
     });
 
     it('should render the page when going to "get"', function () {
@@ -16,7 +17,7 @@ describe('Get Information View', function () {
         expect(element('[ng-view] .info').count()).toBe(0);
 
         element('button[ng-click="getInformation()"]').click();
-        sleep(0.1);
+        sleep(1);
 
         expect(element('[ng-view] .info').count()).toBe(10);
     });
