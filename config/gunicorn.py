@@ -23,7 +23,7 @@ def get_debug():
 	if debug:
 		return "info"
 	else:
-		return "error"
+		return "info"
 
 
 daemon = True
