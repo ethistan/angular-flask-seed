@@ -32,4 +32,4 @@ unit:
 	scripts/test.sh; exit 0
 
 e2e-test:
-	make run; scripts/e2e-test.sh; make kill; exit 0
+	scripts/e2e-test.sh; exit 0
