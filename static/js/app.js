@@ -21,6 +21,6 @@ angular.module('myApp', [
         $routeProvider.when('/basic', {templateUrl: 'static/partials/basic.html', controller: 'BasicCtrl'});
         $routeProvider.when('/input', {templateUrl: 'static/partials/input.html', controller: 'InputCtrl'});
         $routeProvider.when('/post', {templateUrl: 'static/partials/postInformation.html', controller: 'PostCtrl'});
-        $routeProvider.when('/getInfo', {templateUrl: 'static/partials/getInformation.html', controller: 'GetCtrl'});
+        $routeProvider.when('/get', {templateUrl: 'static/partials/getInformation.html', controller: 'GetCtrl'});
         $routeProvider.otherwise({redirectTo: '/basic'});
     }]);

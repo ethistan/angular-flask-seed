@@ -4,7 +4,7 @@
 
 describe('Get Information View', function () {
     beforeEach(function () {
-        browser().navigateTo('/#/getInfo');
+        browser().navigateTo('/#/get');
 	    sleep(1);
     });
 

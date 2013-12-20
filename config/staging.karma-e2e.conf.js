@@ -17,7 +17,7 @@ module.exports = function (config) {
         singleRun: true,
 
         proxies: {
-            '/': 'http://localhost:5000/'
+            '/': 'http://localhost:5005/'
         },
 
         reporters: ['dots', 'junit'],
