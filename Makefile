@@ -3,7 +3,7 @@
 build: requirements.txt
 	test pip || easy_install pip
 	test virtualenv || pip install virtualenv
-	test -d venv || virtualenv venv
+	test -d venv || virtualenv --system-site-packages venv
 
 	source venv/bin/activate; pip install -r requirements.txt
 	touch venv/bin/activate
