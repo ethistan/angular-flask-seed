@@ -9,7 +9,6 @@ fi
 
 echo ""
 echo "Starting Karma Server (http://karma-runner.github.io)"
-echo $BASE_DIR
 echo "Running in environment" $ENV
 echo "-------------------------------------------------------------------"
 
