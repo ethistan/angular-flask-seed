@@ -12,5 +12,5 @@ echo "Starting Karma Server (http://karma-runner.github.io)"
 echo "Running in environment" $ENV
 echo "-------------------------------------------------------------------"
 
-$BASE_DIR/../node_modules/karma/bin/karma start $BASE_DIR/../config/$ENV.karma-e2e.conf.js $*
+$BASE_DIR/../node_modules/karma/bin/karma start $BASE_DIR/../config/$ENV/karma-e2e.conf.js $*
 exit 0

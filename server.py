@@ -14,12 +14,12 @@ from database.postgres_connector import Database as Postgres
 environment = os.environ.get("ENV", "dev")
 
 app = Flask(__name__)
-app.config.from_pyfile('config/' + environment + '.flask.cfg.py')
+app.config.from_pyfile('config/' + environment + '/flask.cfg.py')
 mongo_db = None
 psql_db = None
 
 config = ConfigParser.RawConfigParser()
-config.read("config/" + environment + ".app.cfg")
+config.read("config/" + environment + "/app.cfg")
 
 
 def init_db(env=None):

@@ -1,4 +1,3 @@
-import multiprocessing
 import ConfigParser
 import os
 
@@ -6,7 +5,7 @@ import os
 def init_config():
 	config = ConfigParser.RawConfigParser()
 	env = os.environ.get("ENV", "dev")
-	config.read("config/" + env + ".app.cfg")
+	config.read("config/" + env + "/app.cfg")
 	return config
 
 

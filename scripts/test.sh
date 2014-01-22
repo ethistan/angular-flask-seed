@@ -14,5 +14,5 @@ echo "-------------------------------------------------------------------"
 
 
 
-$BASE_DIR/../node_modules/karma/bin/karma start $BASE_DIR/../config/$ENV.karma.conf.js $*
+$BASE_DIR/../node_modules/karma/bin/karma start $BASE_DIR/../config/$ENV/karma.conf.js $*
 exit 0

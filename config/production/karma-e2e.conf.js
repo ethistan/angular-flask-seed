@@ -2,7 +2,7 @@ var fs = require('fs');
 var environment = process.env.ENV || "dev";
 
 var getProxy = function () {
-	var file = fs.readFileSync("config/" + environment + ".app.cfg", {encoding: "utf8"}).split("\n"),
+	var file = fs.readFileSync("config/" + environment + "/app.cfg", {encoding: "utf8"}).split("\n"),
 		portNumber,
 		inFlaskSection = false;
 

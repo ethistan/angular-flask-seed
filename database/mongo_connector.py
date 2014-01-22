@@ -9,7 +9,7 @@ from database.mongo_models.person import Person
 
 env = os.environ.get("ENV", "dev")
 config = ConfigParser.RawConfigParser()
-config.read("config/" + env + ".app.cfg")
+config.read("config/" + env + "/app.cfg")
 
 
 class Database:

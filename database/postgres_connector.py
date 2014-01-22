@@ -12,7 +12,7 @@ class Database:
     def __init__(self, env=None):
         config = ConfigParser.RawConfigParser()
 
-        config.read("config/" + environment + ".app.cfg")
+        config.read("config/" + environment + "/app.cfg")
 
         section_name = "Postgres"
         if env:

@@ -12,5 +12,5 @@ echo "Running Nosetests"
 echo "Running in environment" $ENV
 echo "-------------------------------------------------------------------"
 
-nosetests -c $BASE_DIR/../config/$ENV.app.cfg $*
+nosetests -c $BASE_DIR/../config/$ENV/app.cfg $*
 exit 0
