@@ -10,4 +10,9 @@ describe('Sample Application', function () {
     it('should automatically redirect to /basic when location hash/fragment is empty', function () {
         expect(browser().location().url()).toBe("/basic");
     });
+
+	it('should have a blue header background', function() {
+		expect(element(".header-background").css("background-color")).toBe("rgb(0, 50, 99)");
+		expect(element(".sidebar").css("background-color")).toBe("rgb(0, 50, 99)");
+	});
 });
