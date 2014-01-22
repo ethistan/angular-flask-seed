@@ -27,7 +27,7 @@ var getProxy = function () {
 
 module.exports = function (config) {
     config.set({
-        basePath: '../',
+        basePath: '../../',
 
         urlRoot: '/_karma_/',
 
