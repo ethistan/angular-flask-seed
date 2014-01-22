@@ -19,6 +19,9 @@ kill:
 run:
 	source venv/bin/activate; gunicorn server:app -c config/gunicorn.py; deactivate; exit 0
 
+local:
+	source venv/bin/activate; python server.py; deactivate; exit 0
+
 clean:
 	rm -rf venv
 	rm -rf node_modules
