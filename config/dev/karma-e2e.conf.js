@@ -37,11 +37,11 @@ module.exports = function (config) {
 
 		autoWatch: false,
 
-		browsers: ['PhantomJS'],
+		browsers: ['Chrome'],
 
 		frameworks: ['ng-scenario'],
 
-		singleRun: true,
+		singleRun: false,
 
 		proxies: {
 			'/': getProxy()

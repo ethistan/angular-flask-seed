@@ -12,7 +12,7 @@ describe('Sample Application', function () {
     });
 
 	it('should have a blue header background', function() {
-		expect(element(".header-background").attr("class")).toContain("purple");
-		expect(element(".sidebar").attr("class")).toContain("purple");
+		expect(element(".header-background").attr("class")).toContain("blue");
+		expect(element(".sidebar").attr("class")).toContain("blue");
 	});
 });
