@@ -31,7 +31,7 @@ describe('PostCtrl', function () {
 
     it('should send the information to the server to be saved', function () {
         //Given
-        http.expectPOST("/api/saveInformation", {name: 'Frank Sinatra', title: 'mr'}).respond(saveResponse());
+        http.expectPOST("api/saveInformation", {name: 'Frank Sinatra', title: 'mr'}).respond(saveResponse());
         expect(scope.serverResponse).toBeUndefined();
 
         //When

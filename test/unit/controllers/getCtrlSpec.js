@@ -22,7 +22,7 @@ describe('GetCtrl', function () {
     };
 
     it('should request a set of random numbers from the server', function () {
-        http.expectGET("/api/getInformation").respond(cannedRandomNumbers());
+        http.expectGET("api/getInformation").respond(cannedRandomNumbers());
 
         expect(scope.information).toBeUndefined();
         scope.getInformation();
