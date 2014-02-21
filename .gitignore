@@ -8,5 +8,5 @@ venv
 nohup.out
 gunicorn.pid
 Icon
-
+*plugin.xml
 
