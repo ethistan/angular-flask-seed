@@ -50,7 +50,7 @@ angular.module('myApp.controllers.postCtrl', []).
                 $scope.errorMessage = "Please enter a valid name... No Madonnas please";
             }
             else {
-                $http.post("/api/saveInformation", {name: $scope.name, title: $scope.title.value}).success(function (data) {
+                $http.post("api/saveInformation", {name: $scope.name, title: $scope.title.value}).success(function (data) {
                     $scope.serverResponse = data;
                 });
             }
