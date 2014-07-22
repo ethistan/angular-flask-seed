@@ -7,6 +7,6 @@ venv
 .DS_Store
 nohup.out
 gunicorn.pid
-Icon
 *plugin.xml
-
+Icon
+*.iml
