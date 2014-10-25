@@ -6,8 +6,6 @@ environment = os.environ.get("ENV", "dev")
 
 
 class ServerTestCase(unittest.TestCase):
-    psql_db = None
-
     def setUp(self):
         self.app = server.app.test_client()
         server.init_db("Test")
