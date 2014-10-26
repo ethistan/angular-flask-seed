@@ -1,5 +1,7 @@
 logs/*
 !.gitkeep
+coverage/
+test-results.xml
 node_modules/
 .idea/
 *.pyc
