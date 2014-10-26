@@ -2,64 +2,69 @@ var fs = require('fs');
 var environment = process.env.ENV || "dev";
 
 var getProxy = function () {
-	var file = fs.readFileSync("config/" + environment + "/app.cfg", {encoding: "utf8"}).split("\n"),
-		portNumber,
-		inFlaskSection = false;
+    var file, portNumber, inFlaskSection = false;
 
-	for (var index in file) {
-		var line = file[index];
+    if(fs.existsSync("config/" + environment + "/app.cfg")) {
+        file = fs.readFileSync("config/" + environment + "/app.cfg", {encoding: "utf8"}).split("\n");
+    } else {
+        file = fs.readFileSync("app.cfg", {encoding: "utf8"}).split("\n");
+    }
 
-		if (line == "[Flask]") {
-			inFlaskSection = true;
-		}
+    for (var index in file) {
+        var line = file[index];
 
-		if(inFlaskSection && line.indexOf("port=") == 0) {
-			portNumber = line.substr("port=".length);
-			break;
-		}
-	}
+        if (line == "[Flask]") {
+            inFlaskSection = true;
+        }
 
-	var proxy = "http://0.0.0.0:" + portNumber + "/"
-	console.log("Proxying:", proxy);
+        if(inFlaskSection && line.indexOf("port=") == 0) {
+            portNumber = line.substr("port=".length);
+            break;
+        }
+    }
 
-	return proxy;
-}
+    var proxy = "http://0.0.0.0:" + portNumber + "/";
+    console.log("Proxying:", proxy);
+
+    return proxy;
+};
 
 module.exports = function (config) {
-	config.set({
-		basePath: '../..',
+    config.set({
+        basePath: '../..',
 
-		urlRoot: '/_karma_/',
+        urlRoot: '/_karma_/',
 
-		files: [
-			'test/e2e/**/*.js'
-		],
+        files: [
+            'test/e2e/**/*.js'
+        ],
 
-		autoWatch: false,
+        autoWatch: false,
 
-		browsers: ['Chrome'],
+        browsers: ['Chrome'],
 
-		frameworks: ['ng-scenario'],
+        frameworks: ['ng-scenario'],
 
-		singleRun: false,
+        singleRun: true,
 
-		proxies: {
-			'/': getProxy()
-		},
+        proxies: {
+            '/': getProxy()
+        },
 
-		plugins: [
-			'karma-junit-reporter',
-			'karma-chrome-launcher',
-			'karma-firefox-launcher',
-			'karma-phantomjs-launcher',
-			'karma-jasmine',
-			'karma-ng-scenario'
-		],
+        plugins: [
+            'karma-junit-reporter',
+            'karma-chrome-launcher',
+            'karma-firefox-launcher',
+            'karma-phantomjs-launcher',
+            'karma-jasmine',
+            'karma-ng-scenario',
+            'karma-coverage'
+        ],
 
-		junitReporter: {
-			outputFile: 'test_out/e2e.xml',
-			suite: 'e2e'
-		}
+        junitReporter: {
+            outputFile: 'test_out/e2e.xml',
+            suite: 'e2e'
+        }
 
-	})
+    })
 };

@@ -2,28 +2,32 @@ var fs = require('fs');
 var environment = process.env.ENV || "dev";
 
 var getProxy = function () {
-	var file = fs.readFileSync("config/" + environment + "/app.cfg", {encoding: "utf8"}).split("\n"),
-		portNumber,
-		inFlaskSection = false;
+    var file, portNumber, inFlaskSection = false;
 
-	for (var index in file) {
-		var line = file[index];
+    if(fs.existsSync("config/" + environment + "/app.cfg")) {
+        file = fs.readFileSync("config/" + environment + "/app.cfg", {encoding: "utf8"}).split("\n");
+    } else {
+        file = fs.readFileSync("app.cfg", {encoding: "utf8"}).split("\n");
+    }
 
-		if (line == "[Flask]") {
-			inFlaskSection = true;
-		}
+    for (var index in file) {
+        var line = file[index];
 
-		if(inFlaskSection && line.indexOf("port=") == 0) {
-			portNumber = line.substr("port=".length);
-			break;
-		}
-	}
+        if (line == "[Flask]") {
+            inFlaskSection = true;
+        }
 
-	var proxy = "http://0.0.0.0:" + portNumber + "/"
-	console.log("Proxying:", proxy);
+        if(inFlaskSection && line.indexOf("port=") == 0) {
+            portNumber = line.substr("port=".length);
+            break;
+        }
+    }
 
-	return proxy;
-}
+    var proxy = "http://0.0.0.0:" + portNumber + "/";
+    console.log("Proxying:", proxy);
+
+    return proxy;
+};
 
 module.exports = function (config) {
     config.set({
@@ -44,7 +48,7 @@ module.exports = function (config) {
         singleRun: true,
 
         proxies: {
-            '/': 'http://localhost:5005/'
+            '/': getProxy()
         },
 
         reporters: ['dots', 'junit'],

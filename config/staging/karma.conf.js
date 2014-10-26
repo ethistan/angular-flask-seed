@@ -1,42 +1,49 @@
 module.exports = function(config){
     config.set({
-    basePath : '../../',
+        basePath : '../../',
 
-    files : [
-      'static/lib/angular/angular.js',
-      'static/lib/angular/angular-*.js',
-      'test/lib/angular/angular-mocks.js',
-      'static/js/**/*.js',
-      'test/unit/**/*.js'
-    ],
+        files : [
+            'static/lib/angular/angular.js',
+            'static/lib/angular/angular-*.js',
+            'test/lib/angular/angular-mocks.js',
+            'static/lib/angular/angular-route.js',
+            'static/lib/angular/angular-sanitize.js',
+            'static/lib/angular/angular-animate.js',
+            'static/lib/jQuery/jquery-1.11.1.js',
+            'static/lib/bootstrap/bootstrap.min.js',
+            'static/js/**/*.js',
+            'test/unit/**/*.js'
+        ],
 
-    exclude : [
-      'static/lib/angular/angular-loader.js',
-      'static/lib/angular/*.min.js',
-      'static/lib/angular/angular-scenario.js'
-    ],
+        preprocessors: {
+            'static/js/**/*.js': 'coverage'
+        },
 
-    autoWatch : false,
+        exclude: [
+            'static/lib/angular/*.min.js',
+            '**/angular-scenario.js'
+        ],
 
-    singleRun: true,
+        autoWatch: false,
+        singleRun: true,
 
-    frameworks: ['jasmine'],
+        frameworks: ['jasmine'],
 
-    browsers : ['PhantomJS'],
+        browsers : ['PhantomJS'],
 
-    reporters: ['progress', 'junit'],
+        reporters: ['progress', 'junit', 'coverage'],
 
-    plugins : [
+        plugins: [
             'karma-junit-reporter',
             'karma-chrome-launcher',
             'karma-firefox-launcher',
             'karma-phantomjs-launcher',
-            'karma-jasmine'
-            ],
+            'karma-jasmine',
+            'karma-coverage'
+        ],
 
-    junitReporter : {
-      outputFile: 'test_out/unit.xml',
-      suite: 'unit'
-    }
-
+        junitReporter : {
+            outputFile: 'test_out/unit.xml',
+            suite: 'unit'
+        }
 })};

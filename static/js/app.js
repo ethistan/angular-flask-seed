@@ -4,6 +4,9 @@
 // Declare app level module which depends on filters, and services
 angular.module('myApp', [
         'ngRoute',
+        'mgcrea.ngStrap',
+        'ngSanitize',
+        'ngAnimate',
         'myApp.filters',
 
         'myApp.services.sharedInformationService',

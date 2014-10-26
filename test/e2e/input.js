@@ -21,7 +21,7 @@ describe('Input View', function () {
 
     it('should update the name display when the title input is changed', function () {
         input('name').enter("John Doe");
-        select("title").option("dr");
+        select("title").option("Dr");
 
         expect(element('[ng-view] p').text()).toContain("Dr John Doe");
     });
