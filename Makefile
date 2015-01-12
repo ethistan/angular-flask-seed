@@ -2,14 +2,12 @@
 SHELL := /bin/bash
 
 build: requirements.txt
-	test `which pip` || easy_install pip
-	test `which virtualenv` || pip install virtualenv
-	test -d venv || virtualenv --system-site-packages venv
+	test -d venv || python virtualenv-12.0.5/virtualenv.py -p python2.7 venv
 
 	source venv/bin/activate; pip install -r requirements.txt
 	touch venv/bin/activate
 
-	test karma || npm install karma; npm install karma-junit-reporter --save-dev; npm install karma-ng-scenario --save-dev; npm install karma-coverage --save-dev
+	npm install --cache .npm
 
 update:
 	source venv/bin/activate; pip install -Ur requirements.txt
