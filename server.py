@@ -1,78 +1,77 @@
-import ConfigParser
 import os
-import random
-import math
-from bson import json_util
 
-import requests
+from flask import Flask, make_response, g, send_file, abort
+from flask.ext.mail import Mail
 
-from flask import Flask, make_response, request, json
+from blueprints.information import information
 from database.mongo_connector import Database as Mongo
+
 
 environment = os.environ.get("ENV", "dev")
 
 app = Flask(__name__)
-app.config.from_pyfile('config/' + environment + '/flask.cfg.py')
-mongo_db = None
+app.config.from_object("config.default_setting")
+app.config.from_object("config." + environment + ".custom_setting")
 
-config = ConfigParser.RawConfigParser()
-config.read("config/" + environment + "/app.cfg")
+mail = Mail(app)
+mongo = Mongo()
 
-
-def init_db(env=None):
-    global mongo_db
-
-    mongo_db = Mongo()
+app.register_blueprint(information)
 
 
-def dump_object(json_object):
-    return json.dumps(json_object, default=json_util.default)
+@app.before_request
+def before_request():
+    g.mongo = mongo
+    g.mongo.connect()
+
+    g.mail = mail.init_app(app)
+
+
+@app.teardown_request
+def teardown_request(exception):
+    if exception:
+        print "Closing database connection error:", exception
+    else:
+        db = getattr(g, 'mongo', None)
+        if db is not None:
+            db.close()
 
 
 @app.route("/")
 def index():
-    # Use the below in production, as it allows cacheing of files
-    #return send_file('html/index.html')
-
-    return make_response(open('html/index.html').read())
-
-
-@app.route("/google")
-def google():
-    # This is an example of a GET request from another server
-    return requests.get("http://www.google.com").content
+    if environment in ["staging", "production"]:
+        # This allows the file to be cached instead of reloading it each time like we want on dev.
+        return send_file('html/index.html')
+    else:
+        return make_response(open('html/index.html').read())
 
 
-@app.route("/api/saveInformation", methods=["POST"])
-def save_information():
-    data = request.json
-
-    mongo_id = mongo_db.save("person", data)
-    person = mongo_db.get_single_data("person", dump=False, criteria={"_id": mongo_id})
-
-    return dump_object({
-    "status": "success",
-    "mongo": str(person)
-    })
+@app.route("/test")
+def test():
+    if environment in ["sandbox", "dev"]:
+        # This allows the file to be cached instead of reloading it each time like we want on dev.
+        return make_response(open('html/test.html').read())
+    else:
+        abort(404)
 
 
-@app.route("/api/getInformation", methods=["GET"])
-def get_information():
-    values = []
-
-    for i in xrange(10):
-        values.append({
-        "label": "Random Number " + str(i) + ":",
-        "value": math.floor(random.random() * 10)
-        })
-
-    return json.dumps(values)
+@app.route("/mock.js")
+def get_mock():
+    if environment in ["sandbox", "dev"]:
+        # This allows the file to be cached instead of reloading it each time like we want on dev.
+        return make_response(open('test/e2e/e2e-mocks.js').read())
+    else:
+        abort(404)
 
 
-init_db()
+@app.route("/mock/<mock_name>")
+def get_individual_mock(mock_name):
+    if environment in ["sandbox", "dev"]:
+        # This allows the file to be cached instead of reloading it each time like we want on dev.
+        return make_response(open('test/e2e/mocks/' + mock_name).read())
+    else:
+        abort(404)
+
 
 if __name__ == "__main__":
-    host = config.get("Flask", "host")
-    port = config.get("Flask", "port")
-
-    app.run(host, int(port))
+    app.run(host="0.0.0.0", port=5005)

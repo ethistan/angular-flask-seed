@@ -1,17 +1,23 @@
-import unittest
 import os
+
+from flask.ext.testing import TestCase
+
 import server
+
 
 environment = os.environ.get("ENV", "dev")
 
 
-class ServerTestCase(unittest.TestCase):
-    def setUp(self):
-        self.app = server.app.test_client()
-        server.init_db("Test")
+class ServerTestCase(TestCase):
+    def create_app(self):
+        server.app.config['TESTING'] = True
+        server.mongo.connect(env="Test")
+        return server.app
 
-    # server.psql_db.clean_test_database()
+    def setUp(self):
+        server.mongo.clean()
 
     def test_index_page(self):
-        rv = self.app.get('/')
+        rv = self.client.get('/')
         self.assertTrue(rv.data.find("CCG Sample App"))
+

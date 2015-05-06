@@ -2,15 +2,29 @@
 SHELL := /bin/bash
 
 build: requirements.txt
+<<<<<<< Updated upstream
 	test -d venv || python virtualenv-12.0.5/virtualenv.py -p python2.7 venv
+=======
+	test -d venv || virtualenv -p python2.7 venv
+>>>>>>> Stashed changes
 
 	source venv/bin/activate; pip install -r requirements.txt
 	touch venv/bin/activate
 
+<<<<<<< Updated upstream
 	npm install --cache .npm
+=======
+	npm install
+>>>>>>> Stashed changes
 
 update:
 	source venv/bin/activate; pip install -Ur requirements.txt
+
+seed:
+	source venv/bin/activate; python database/seed_database.py; deactivate;
+
+migrate:
+	source venv/bin/activate; python database/migrate.py; deactivate;
 
 kill:
 	test ! -f gunicorn.pid || kill `cat gunicorn.pid`; exit 0

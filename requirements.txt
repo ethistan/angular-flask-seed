@@ -10,4 +10,6 @@ wsgiref==0.1.2
 xlsxwriter
 gunicorn
 nose==1.3.0
-SQLAlchemy==0.8.4
+coverage
+Flask-Mail
+Flask-Testing

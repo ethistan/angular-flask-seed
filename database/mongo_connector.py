@@ -1,31 +1,49 @@
 import ConfigParser
-import os
 import sys
-from flask import json
+import os
+
+from flask import json, current_app
 from mongokit import ConnectionError, Connection
 from bson.objectid import ObjectId
 from bson import json_util
-from database.mongo_models.person import Person
 
-env = os.environ.get("ENV", "dev")
+
+environment = os.environ.get("ENV", "dev")
 config = ConfigParser.RawConfigParser()
-config.read("config/" + env + "/app.cfg")
+config.read("config/" + environment + "/app.cfg")
 
 
 class Database:
     def __init__(self):
-        mongodb_uri = ":".join([config.get("Mongo", "host"), config.get("Mongo", "port")])
-        db_name = config.get("Mongo", "database")
+        self.database = None
+        self.connection = None
+
+    def connect(self, env=None):
+        section_name = "Mongo"
+        if env or (current_app and current_app.config["TESTING"]):
+            section_name += " Test"
+
+        mongodb_uri = ":".join([config.get(section_name, "host"), config.get(section_name, "port")])
+        db_name = config.get(section_name, "database")
 
         try:
-            connection = Connection(mongodb_uri)
+            self.connection = Connection(mongodb_uri)
+            self.database = self.connection[db_name]
 
-            connection.register([Person])
+            if config.has_option(section_name, "user"):
+                self.database.authenticate(config.get(section_name, "user"), config.get(section_name, "password"))
 
-            self.database = connection[db_name]
         except ConnectionError:
             print('Error: Unable to connect to database.')
             sys.exit(1)
+
+    def close(self):
+        self.connection.close()
+
+    def clean(self):
+        for collection_name in self.database.collection_names():
+            if collection_name not in ["system.indexes"]:
+                self.database[collection_name].remove({})
 
     @staticmethod
     def dump_object(json_object):
@@ -37,7 +55,7 @@ class Database:
             data["_id"] = ObjectId(str(data["id"]))
             del data["id"]
         except KeyError:
-            #This just means it is a new object, not an existing one
+            # This just means it is a new object, not an existing one
             pass
         return data
 
@@ -46,7 +64,7 @@ class Database:
         try:
             string = ObjectId(string)
         except KeyError:
-            #This just means it is a new object, not an existing one
+            # This just means it is a new object, not an existing one
             pass
         return string
 
@@ -56,7 +74,7 @@ class Database:
             data["id"] = str(data["_id"])
             del data["_id"]
         except KeyError:
-            #This just means it is a new
+            # This just means it is a new
             pass
         return data
 
@@ -79,7 +97,7 @@ class Database:
             data_list.append(entry)
 
         if dump:
-            return self.dump_object(data_list)
+            return self.dump_object
         else:
             return data_list
 
@@ -93,9 +111,11 @@ class Database:
 
         if len(data) > 0:
             data = data[0]
+        else:
+            data = {}
 
         if dump:
-            return self.dump_object(data)
+            return self.dump_object
         else:
             return data
 
@@ -113,12 +133,15 @@ class Database:
             data_list.append(entry)
 
         if dump:
-            return self.dump_object(data_list)
+            return self.dump_object
         else:
             return data_list
 
     def save(self, collection_name, data):
         collection = self.get_collection(collection_name)
+
+        if "id" in data:
+            data = self.create_bson_id_from_object(data)
         return collection.save(data)
 
     def update(self, collection_name, element_id, new_data):
