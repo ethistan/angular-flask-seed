@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="PhantomJS 1.9.8 (Mac OS X)" package="e2e" timestamp="2015-05-06T05:46:28" id="0" hostname="Peter-Budds-Macbook-Pro.local" tests="13" errors="0" failures="0" time="2.284">
+  <testsuite name="PhantomJS 1.9.8 (Mac OS X)" package="e2e" timestamp="2015-05-06T06:07:07" id="0" hostname="Peter-Budds-Macbook-Pro.local" tests="13" errors="0" failures="0" time="2.11">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34"/>
     </properties>
-    <testcase name="should render the page when going to &quot;get&quot;" time="0.478" classname="e2e PhantomJS 1.9.8 (Mac OS X).Get Information View"/>
-    <testcase name="should populate the list with numbers when the get button is pressed" time="0.147" classname="e2e PhantomJS 1.9.8 (Mac OS X).Get Information View"/>
+    <testcase name="should render the page when going to &quot;get&quot;" time="0.219" classname="e2e PhantomJS 1.9.8 (Mac OS X).Get Information View"/>
+    <testcase name="should populate the list with numbers when the get button is pressed" time="0.148" classname="e2e PhantomJS 1.9.8 (Mac OS X).Get Information View"/>
     <testcase name="should automatically redirect to /basic when location hash/fragment is empty" time="0.108" classname="e2e PhantomJS 1.9.8 (Mac OS X).Sample Application"/>
-    <testcase name="should have a blue header background" time="0.123" classname="e2e PhantomJS 1.9.8 (Mac OS X).Sample Application"/>
-    <testcase name="should display the input fields when the user goes to the input page" time="0.115" classname="e2e PhantomJS 1.9.8 (Mac OS X).Input View"/>
-    <testcase name="should update the name display when the name input is changed" time="0.157" classname="e2e PhantomJS 1.9.8 (Mac OS X).Input View"/>
-    <testcase name="should update the name display when the title input is changed" time="0.145" classname="e2e PhantomJS 1.9.8 (Mac OS X).Input View"/>
-    <testcase name="should change the age descriptor when the age is changed" time="0.161" classname="e2e PhantomJS 1.9.8 (Mac OS X).Input View"/>
-    <testcase name="should change the text when the research topic is changed" time="0.131" classname="e2e PhantomJS 1.9.8 (Mac OS X).Input View"/>
-    <testcase name="should render the page when going to &quot;post&quot;" time="0.162" classname="e2e PhantomJS 1.9.8 (Mac OS X).Post Information View"/>
-    <testcase name="should show an error when the name is empty" time="0.173" classname="e2e PhantomJS 1.9.8 (Mac OS X).Post Information View"/>
-    <testcase name="should reset the error to hidden when the name is changed" time="0.183" classname="e2e PhantomJS 1.9.8 (Mac OS X).Post Information View"/>
-    <testcase name="should post the information to the server and display the results" time="0.201" classname="e2e PhantomJS 1.9.8 (Mac OS X).Post Information View"/>
+    <testcase name="should have a blue header background" time="0.14" classname="e2e PhantomJS 1.9.8 (Mac OS X).Sample Application"/>
+    <testcase name="should display the input fields when the user goes to the input page" time="0.122" classname="e2e PhantomJS 1.9.8 (Mac OS X).Input View"/>
+    <testcase name="should update the name display when the name input is changed" time="0.167" classname="e2e PhantomJS 1.9.8 (Mac OS X).Input View"/>
+    <testcase name="should update the name display when the title input is changed" time="0.147" classname="e2e PhantomJS 1.9.8 (Mac OS X).Input View"/>
+    <testcase name="should change the age descriptor when the age is changed" time="0.174" classname="e2e PhantomJS 1.9.8 (Mac OS X).Input View"/>
+    <testcase name="should change the text when the research topic is changed" time="0.142" classname="e2e PhantomJS 1.9.8 (Mac OS X).Input View"/>
+    <testcase name="should render the page when going to &quot;post&quot;" time="0.17" classname="e2e PhantomJS 1.9.8 (Mac OS X).Post Information View"/>
+    <testcase name="should show an error when the name is empty" time="0.174" classname="e2e PhantomJS 1.9.8 (Mac OS X).Post Information View"/>
+    <testcase name="should reset the error to hidden when the name is changed" time="0.191" classname="e2e PhantomJS 1.9.8 (Mac OS X).Post Information View"/>
+    <testcase name="should post the information to the server and display the results" time="0.208" classname="e2e PhantomJS 1.9.8 (Mac OS X).Post Information View"/>
     <system-out><![CDATA[
 ]]></system-out>
     <system-err/>
