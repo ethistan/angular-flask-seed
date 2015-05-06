@@ -14,7 +14,7 @@ class ServerTestCase(TestCase):
         server.mongo.connect(env="Test")
         return server.app
 
-    def setUp(self):
+    def set_up(self):
         server.mongo.clean()
 
     def test_index_page(self):
