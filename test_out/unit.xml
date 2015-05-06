@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="PhantomJS 1.9.8 (Mac OS X)" package="unit" timestamp="2015-05-06T05:46:01" id="0" hostname="Peter-Budds-Macbook-Pro.local" tests="13" errors="0" failures="0" time="0.032">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34"/>
+    </properties>
+    <testcase name="should request a set of random numbers from the server" time="0.014" classname="unit PhantomJS 1.9.8 (Mac OS X).GetCtrl"/>
+    <testcase name="should have a menu where each element in the array is a title and a page name" time="0.002" classname="unit PhantomJS 1.9.8 (Mac OS X).controllers"/>
+    <testcase name="should give a certain response when the age is not a number" time="0.001" classname="unit PhantomJS 1.9.8 (Mac OS X).InputCtrl"/>
+    <testcase name="should be vaguely insulting when the age is much less than 29" time="0" classname="unit PhantomJS 1.9.8 (Mac OS X).InputCtrl"/>
+    <testcase name="should tell me I&apos;m young when I am only slightly younger" time="0.001" classname="unit PhantomJS 1.9.8 (Mac OS X).InputCtrl"/>
+    <testcase name="should tell me when I am the same age as it" time="0.001" classname="unit PhantomJS 1.9.8 (Mac OS X).InputCtrl"/>
+    <testcase name="should show respect when I am older than it" time="0" classname="unit PhantomJS 1.9.8 (Mac OS X).InputCtrl"/>
+    <testcase name="should send the information to the server to be saved" time="0.003" classname="unit PhantomJS 1.9.8 (Mac OS X).PostCtrl"/>
+    <testcase name="should not send the request and show an error when there is no title" time="0.004" classname="unit PhantomJS 1.9.8 (Mac OS X).PostCtrl"/>
+    <testcase name="should not send a request and show an error when the name is empty" time="0.001" classname="unit PhantomJS 1.9.8 (Mac OS X).PostCtrl"/>
+    <testcase name="should not send a request and show an error when the name does not have a space in it" time="0.001" classname="unit PhantomJS 1.9.8 (Mac OS X).PostCtrl"/>
+    <testcase name="should remove the error when the user changes the entered details" time="0.001" classname="unit PhantomJS 1.9.8 (Mac OS X).PostCtrl"/>
+    <testcase name="should attach the row class to the element" time="0.003" classname="unit PhantomJS 1.9.8 (Mac OS X).directives row"/>
+    <system-out><![CDATA[
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>
