@@ -23,15 +23,17 @@ class Database:
         if env or (current_app and current_app.config["TESTING"]):
             section_name += " Test"
 
-        mongodb_uri = ":".join([config.get(section_name, "host"), config.get(section_name, "port")])
+        mongodb_uri = "mongodb://"
+
+        if config.has_option(section_name, "user"):
+            mongodb_uri += config.get(section_name, "user") + ":" + config.get(section_name, "password") + "@"
+
+        mongodb_uri += config.get(section_name, "host") + ":" + config.get(section_name, "port")
         db_name = config.get(section_name, "database")
 
         try:
             self.connection = Connection(mongodb_uri)
             self.database = self.connection[db_name]
-
-            if config.has_option(section_name, "user"):
-                self.database.authenticate(config.get(section_name, "user"), config.get(section_name, "password"))
 
         except ConnectionError:
             print('Error: Unable to connect to database.')
