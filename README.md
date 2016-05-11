@@ -9,9 +9,9 @@ For those unfamiliar with Angular, Flask, jQuery, Bootstrap or LESS; documentati
 <ul>
     <li> <a href="http://angularjs.org/">Angular</a></li>
     <li> <a href="http://flask.pocoo.org/">Flask</a></li>
-    <li> <a href="http://flask.pocoo.org/">Flask</a></li>
+    <li> <a href="http://jquery.com/">JQuery</a></li>
     <li> <a href="http://getbootstrap.com/">Bootstrap</a></li>
-    <li> <a href="http://flask.pocoo.org/">Flask</a></li>
+    <li> <a href="http://lesscss.org/">Less</a></li>
 </ul>
 
 <h1>Installation Instruction</h1>
