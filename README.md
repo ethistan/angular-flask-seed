@@ -62,6 +62,8 @@ run `make local` to launch the Flask server in local debug mode (single threaded
 
 run `make run` to launch the Flask server via the gunicorn wrapper with 4 worker nodes.
 
+run `make kill` to stop the gunicorn wrapper.
+
 <h2>Run in Environment</h2>
 
 Both `make local` and `make run` can be launched in a specific environment by appending ` ENV=environmentName` to the make command.
