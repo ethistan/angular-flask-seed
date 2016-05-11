@@ -1,5 +1,7 @@
 # Makefile
 
+SHELL := /bin/bash
+
 build: requirements.txt
 	test -d venv || virtualenv -p python2.7 venv
 	source venv/bin/activate; pip install -r requirements.txt
