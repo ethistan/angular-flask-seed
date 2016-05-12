@@ -28,7 +28,7 @@ The virtual environment can be cleaned by running the `make clean` command
 
 <h2>Initial Setup</h2>
 
-run `make install` to setup the python virtual environment, install the python modules and node modules needed for running and testing
+run `make build` to setup the python virtual environment, install the python modules and node modules needed for running and testing
 
 <h2>Configuration</h2>
 
