@@ -48,6 +48,8 @@ Environment based settings that override the default settings are located in the
 
 All the testing code can be found in the `test` folder under the respective testing types.
 
+NOTE: The `e2e-test` testing suite requires a running server. Use `make run` before running the e2e testing suite
+
 run `make test` to run the full suite of unit, python unit and acceptance tests
 
 run `make unit` to run just the unit tests
